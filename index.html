@@ -81,16 +81,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NiceOne Deals - كود خصم نايس ون OB170</title>
+  <title>كود خصم نايس ون - NiceOne Deals</title>
   <meta name="description" content="اكتشف عروض نايس ون المميزة مع كود خصم نايس ون OB170! وفر 10% على العطور، المكياج، مستحضرات التجميل، والإكسسوارات في السعودية.">
   <meta name="keywords" content="كود خصم نايس ون, كوبون نايس ون, عروض نايس ون, خصم نايس ون, نايس ون عطور, نايس ون مكياج, كود نايس ون OB170">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Amiri&family=Cairo:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Amiri&family=Cairo:wght@300&family=Tajawal:wght@700&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Cairo', sans-serif; background-color: #f5f5f5; }
-    .header { background-color: #fff; padding: 1rem; text-align: center; border-bottom: 1px solid #e5e7eb; display: flex; justify-content: space-between; align-items: center; }
-    .header .logo-left { font-family: 'Dancing Script', cursive; font-size: 1.5rem; color: #4B0082; margin-left: 1rem; }
-    .header .logo-right { font-family: 'Amiri', serif; font-size: 1.2rem; color: #4B0082; margin-right: 1rem; }
+    .header { background-color: #e6e6fa; padding: 1rem; text-align: center; border-bottom: 1px solid #e5e7eb; display: flex; justify-content: space-between; align-items: center; }
+    .header .logo-left { font-family: 'Tajawal', sans-serif; font-size: 1.2rem; color: #4B0082; margin-left: 1rem; }
+    .header .logo-right { font-family: 'Dancing Script', cursive; font-size: 1.5rem; color: #4B0082; margin-right: 1rem; }
+    @media (max-width: 640px) {
+      .header { flex-direction: row-reverse; } /* Reverse order on mobile: Arabic on right, English on left */
+      .header .logo-left { margin-right: 1rem; margin-left: 0; }
+      .header .logo-right { margin-left: 1rem; margin-right: 0; }
+    }
     .coupon-section { 
       background-color: #fff; 
       padding: 2rem; 
@@ -159,16 +164,30 @@
     }
     button:hover { background-color: #3a0062; }
     h1, h2, h3, p, a { font-family: 'Cairo', sans-serif; font-weight: 300; }
+    .footer { 
+      background-color: #1a1a1a; 
+      color: white; 
+      padding: 1rem; 
+      text-align: center; 
+      margin-top: 2rem; 
+    }
+    .footer .coupon-code { 
+      font-size: 1.2rem; 
+      padding: 0.5rem; 
+      border: 2px dashed #fff; 
+      background-color: #333; 
+      cursor: pointer; 
+    }
   </style>
 </head>
 <body>
   <header class="header">
-    <div class="logo-left">NiceOne Deals</div>
-    <div class="logo-right">عروض نايس ون</div>
+    <div class="logo-left">كود خصم نايس ون</div>
+    <div class="logo-right">NiceOne Deals</div>
   </header>
   <div class="coupon-section">
     <h2 class="text-xl font-semibold text-purple-800 mb-2">كود خصم نايس ون!</h2>
-    <p class="text-gray-600 mb-4">استخدم كود الخصم التالي لتوفير 10% على مشترياتك</p>
+    <p class="text-gray-600 mb-4">استخدم الكود التالي للحصول على خصم مميز:</p>
     <div class="coupon-code" id="coupon" onclick="copyCode()">OB170</div>
     <button 
       onclick="copyCodeAndRedirect()" 
@@ -215,6 +234,11 @@
     <p class="text-gray-600 text-center">تابع #كود_خصم_نايس_ون و #عروض_نايس_ون على تويتر وإنستغرام للحصول على أحدث العروض.</p>
   </div>
 
+  <footer class="footer">
+    <p>الكود الخاص بك:</p>
+    <div class="coupon-code" id="footer-coupon" onclick="copyFooterCode()">OB170</div>
+  </footer>
+
   <script>
     function copyCode() {
       const code = "OB170";
@@ -234,6 +258,19 @@
       setTimeout(() => {
         window.location.href = "https://niceonesa.com/ar?rcode=OB170&utm_source=google&utm_medium=cpc&utm_campaign=niceone";
       }, 1000);
+    }
+
+    function copyFooterCode() {
+      const code = "OB170";
+      navigator.clipboard.writeText(code).then(() => {
+        const notification = document.getElementById('notification');
+        notification.style.display = 'block';
+        setTimeout(() => {
+          notification.style.display = 'none';
+        }, 3000);
+      }).catch(err => {
+        console.error("فشل نسخ الكود: ", err);
+      });
     }
   </script>
 </body>
